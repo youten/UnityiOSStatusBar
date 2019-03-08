@@ -17,7 +17,7 @@ extern "C"
     {
         NSLog(@"_setStatusBarEnabled %d", isEnabled);
         UIViewController *vc = GetAppController().rootViewController;
-        if (!_isStatusBarHidden) {
+        if (!_isStatusBarInited) {
             _isStatusBarHidden = vc.prefersStatusBarHidden;
             class_replaceMethod([vc class], @selector(prefersStatusBarHidden), (IMP)&preferStatusBarHidden_Impl,
                                 UIViewController_preferStatusBarHidden_Enc);
